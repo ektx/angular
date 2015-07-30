@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html ng-app>
+<head>
+	<meta charset="UTF-8">
+	<title>To do list!!</title>
+	<script src="../1.x/lib/angular-1.4.3/angular.min.js"></script>
+</head>
+<body>
+	<div ng-controller="TodoCtrl">
+		<h2>Total todos:{{getTotalTodos()}}</h2>
+		<ul class="unstyled">
+			<li ng-repeat="todo in todos">
+				<input type="checkbox" ng-model="todo.done">
+				<span class="done-{{todo.done}}">{{todo.done}}</span>
+			</li>
+		</ul>
+	</div>
+</body>
+<script>
+	function TodoCtrl($scope) {
+		$scope.todos = [
+			{text:'Learn AngularJs', done:false},
+			{text:'Build an app', done:false}
+		];
+
+		$scope.getTotalTodos = function() {
+			return $scope.todos.length;
+		}
+	}
+</script>
+</html>
