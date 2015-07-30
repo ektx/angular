@@ -3,7 +3,14 @@
 <head>
 	<meta charset="UTF-8">
 	<title>To do list!!</title>
-	<script src="../1.x/lib/angular-1.4.3/angular.min.js"></script>
+	<script src="../1.x/lib/1.0.0/angular-1.0.0rc3.min.js"></script>
+	<script type="text/javascript" src="underscore-min.js"></script>
+	<style type="text/css">
+	.done-true {
+		text-decoration: line-through;
+		color: #666;
+	}
+	</style>
 </head>
 <body>
 	<div ng-controller="TodoCtrl">
@@ -11,13 +18,20 @@
 		<ul class="unstyled">
 			<li ng-repeat="todo in todos">
 				<input type="checkbox" ng-model="todo.done">
-				<span class="done-{{todo.done}}">{{todo.done}}</span>
+				<span class="done-{{todo.done}}">{{todo.text}}</span>
 			</li>
 		</ul>
+		<form class="form-horizontal">
+			<input type="text" ng-model="formTodoText" ng-model-instant>
+			<button class="btn" ng-click="addTodo()">Add</button>
+		</form>
+		<button class="btn-remove" ng-click="clearCompleted()">Del</button>
 	</div>
 </body>
 <script>
 	function TodoCtrl($scope) {
+		// $scope.totalTodos = 4;
+
 		$scope.todos = [
 			{text:'Learn AngularJs', done:false},
 			{text:'Build an app', done:false}
@@ -25,6 +39,18 @@
 
 		$scope.getTotalTodos = function() {
 			return $scope.todos.length;
+		}
+
+		$scope.clearCompleted = function() {
+			$scope.todos = _.filter($scope.todos, function(todo) {
+				return !todo.done;
+			})
+		}
+
+		$scope.addTodo = function() {
+			if (!$scope.formTodoText) return;
+			$scope.todos.push({text:$scope.formTodoText, done:false})
+			$scope.formTodoText = '';
 		}
 	}
 </script>
