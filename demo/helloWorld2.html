@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../1.x/lib/angular-1.4.3/angular.min.js"></script>
+</head>
+<body>
+<div ng-app="hello">
+	<div ng-controller="firstCtrl as data">
+		<h1>{{data.mes.message + " world"}}</h1>	
+	</div>
+	<input type="text" ng-model="str" palceholder="Say somethings">
+</div>
+
+</body>
+<script type="text/javascript">
+angular.module('hello',[]).controller('firstCtrl', function() {
+	// var data = this;
+	this.mes = {message: 'Hello'}
+})
+</script>
+</html>

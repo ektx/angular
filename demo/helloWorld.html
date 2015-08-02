@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../1.x/lib/1.0.0/angular-1.0.0rc3.min.js"></script>
+</head>
+<body>
+<div ng-app="">
+	<div ng-controller="firstCtrl">
+		<h1>{{data.message + " world"}}</h1>	
+	</div>
+	<input type="text" ng-model="str" palceholder="Say somethings">
+</div>
+
+</body>
+<script type="text/javascript">
+	function firstCtrl($scope) {
+		$scope.data = {message: 'Hello'}
+	}
+</script>
+</html>
