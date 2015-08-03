@@ -7,17 +7,16 @@
 </head>
 <body>
 <div ng-app="hello">
-	<div ng-controller="firstCtrl as data">
-		<h1>{{data.mes.message + " world"}}</h1>	
+	<div ng-controller="firstCtrl">
+		<h1>{{mes || 'world'}}</h1>	
+		<input type="text" ng-model="mes" placeholder="Say somethings">
 	</div>
-	<input type="text" ng-model="str" palceholder="Say somethings">
 </div>
 
 </body>
 <script type="text/javascript">
-angular.module('hello',[]).controller('firstCtrl', function() {
-	// var data = this;
-	this.mes = {message: 'Hello'}
+angular.module('hello',[]).controller('firstCtrl', function($scope) {
+	$scope.mes = 'Hello'
 })
 </script>
 </html>
