@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../1.x/lib/angular-1.4.3/angular.min.js"></script>
+</head>
+<body>
+<div ng-app="">
+	<input type="text" ng-keydown="count = count + 1" ng-model="str" ng-init="count = 0" palceholder="Say somethings">
+	<p>Key down count:{{count}}</p>
+	{{str.length}}
+</div>
+
+</body>
+</html>

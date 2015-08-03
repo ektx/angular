@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../1.x/lib/angular-1.4.3/angular.min.js"></script>
+</head>
+<body ng-app="keyEvet">
+<div ng-controller="keyController">
+	<input type="text" ng-keydown="onKeydown($event)" ng-model="str"  palceholder="Say somethings">
+	{{str.length || false}}
+	{{result}}
+	{{string}}
+	{{string.length || false}}
+</div>
+
+</body>
+<script>
+	angular.module('keyEvet', []).controller('keyController', function($scope) {
+
+		$scope.result = 'xx';
+
+		$scope.onKeydown = function($event) {
+			$scope.result =  $event.which;
+			$scope.string =  $scope.str;
+
+		}
+	})
+</script>
+</html>
