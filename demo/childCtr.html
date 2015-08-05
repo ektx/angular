@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myapp">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../1.x/lib/angular-1.4.3/angular.min.js"></script>
+</head>
+<body ng-controller="conterapp">
+	<div ng-controller="childController">
+		<a href="#" ng-click="sayHello()">Say Hello!</a>
+	</div>
+	{{person}}
+</body>
+<script>
+	angular.module('myapp', [])
+	.controller('conterapp', function($scope) {
+		$scope.person = {name: 'Air'}
+	})
+	.controller('childController', function($scope) {
+		$scope.sayHello = function() {
+			$scope.person.name = "Kings"
+		}
+	})
+</script>
+</html>

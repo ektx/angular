@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myapp">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../1.x/lib/angular-1.4.3/angular.min.js"></script>
+</head>
+<body ng-controller="conterapp">
+	<button ng-click="subtract(1)">-</button>
+	{{counter}}
+	<button ng-click="add(1)">+</button>
+</body>
+<script>
+	angular.module('myapp', [])
+	.controller('conterapp', function($scope) {
+		$scope.counter = 0;
+
+		$scope.add = function(amount) {
+			$scope.counter += amount;
+		}
+
+		$scope.subtract = function(amount) {
+			$scope.counter -= amount
+		}
+	})
+</script>
+</html>

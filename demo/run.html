@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myapp">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../1.x/lib/angular-1.4.3/angular.min.js"></script>
+</head>
+<body>
+
+	Hello {{str || 'World'}}
+
+</body>
+<script>
+	angular.module('myapp', [])
+	.run(function($rootScope) {
+		$rootScope.name = 'World!'
+	})
+</script>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myapp">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../1.x/lib/angular-1.4.3/angular.min.js"></script>
+</head>
+<body ng-controller="conterapp">
+	{{person}}  {{person.name}}
+</body>
+<script>
+	angular.module('myapp', [])
+	.controller('conterapp', function($scope) {
+		$scope.person = {name: 'Air'}
+	})
+</script>
+</html>
