@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html ng-app="nameapp">
+<head>
+	<meta charset="UTF-8">
+	<title>ng-repeat</title>
+	<script src="../1.x/lib/angular-1.4.3/angular.min.js"></script>
+</head>
+<body ng-controller="NameCtrl">
+<h1>ng-repeat: looping over lists in templates using ng-repeat</h1>
+<ul>
+	<li ng-repeat="name in names">{{name}}</li>
+</ul>
+</body>
+<script>
+var nameApp = angular.module('nameapp', []);
+nameApp.controller('NameCtrl', function($scope) {
+	$scope.names = ['Apple', "being", "China"]
+})
+</script>
+</html>
