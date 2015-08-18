@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html ng-app="countryApp">
+<head>
+	<meta charset="UTF-8">
+	<title>ng-click()</title>
+	<script src="../1.x/lib/angular-1.4.3/angular.min.js"></script>
+	<script>
+	var countryApp = angular.module('countryApp', []);
+	countryApp.controller('CountryCtrl', function($scope) {
+		$scope.countries = [
+			{"name": "China", "population": 1359821000},
+			{"name": "India", "population": 1205625000},
+			{"name": "United States of America", "population": 312247000}
+		]
+	})
+	</script>
+</head>
+<body ng-controller="CountryCtrl">
+	<table>
+		<tr>
+			<th>国家</th>
+			<th>人口</th>
+		</tr>
+		<tr ng-repeat="country in countries">
+			<td>{{country.name}}</td>
+			<td>{{country.population}}</td>
+		</tr>
+	</table>
+</body>
+</html>
