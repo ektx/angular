@@ -5,18 +5,25 @@
 	<title>Document</title>
 	<script src="../1.x/lib/angular-1.4.3/angular.min.js"></script>
 </head>
-<body>
-<div ng-app="hello">
+<body ng-app="hello">
+<div>
 	<div ng-controller="firstCtrl">
 		<h1>{{mes || 'world'}}</h1>	
 		<input type="text" ng-model="mes" placeholder="Say somethings">
 	</div>
 </div>
-
+<div ng-app="bye">
+	<div ng-controller="secondCtrl">
+		<p>{{bye||'Bye!'}}</p>
+		<input type="text" ng-model="bye" placeholder="Say somethings to bye">
+	</div>
+</div>
 </body>
 <script type="text/javascript">
 angular.module('hello',[]).controller('firstCtrl', function($scope) {
 	$scope.mes = 'Hello'
+}).controller('secondCtrl', function($scope) {
+	$scope.bye = 'bye'
 })
 </script>
 </html>
