@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html ng-app="todoApp" ng-controller="TodoListController as todoList">
+<head>
+	<meta charset="UTF-8">
+	<title>{{todoList.remaining()}}/{{todoList.todos.length}}事件清单</title>
+	<script src="../1.x/lib/1.4.8/angular.min.js"></script>
+	<link rel="stylesheet" href="css/todo.css">
+</head>
+<body>
+	<div>
+		<form ng-submit="todoList.addTodo()">
+			<input type="text" ng-model="todoList.todoText" size="30" placeholder="添加或查询你的待办记录" autofocus>
+			<input type="submit" class="btn-primary" value="+">
+		</form>
+
+		<div class="list-remind">
+			<span>{{todoList.remaining()}} of {{todoList.todos.length}}</span>
+			<a href="" ng-click="todoList.archive()">删除</a>
+		</div>
+
+		<ul class="unstyled">
+			<li ng-repeat="todo in todoList.todos | filter:todoList.todoText">
+				<input type="checkbox" ng-model="todo.done">
+				<span class="done-{{todo.done}}">{{todo.text}}</span>
+				<button ng-click="todoList.remove(todo)">删除</button>
+			</li>
+		</ul>
+	</div>
+</body>
+<script>
+angular.module('todoApp',[]).controller('TodoListController', function() {
+	var todoList = this;
+	todoList.todos = localStorage.length > 0 ?  JSON.parse(localStorage.todoList) : [];
+
+	todoList.remaining = function() {
+		var count = 0;
+		angular.forEach(todoList.todos, function(todo) {
+			// console.log(todoList.todos)
+			count += todo.done ? 0: 1;
+		})
+		updateLocalStorage(todoList.todos);
+		return count;
+	}
+
+	todoList.addTodo = function() {
+
+		// 防止输入空内容的事件
+		if (!todoList.todoText) return;
+
+		todoList.todos.push({text:todoList.todoText, done:false});
+
+
+		todoList.todoText = '';
+	}
+
+	todoList.archive = function() {
+		var oldTodos = todoList.todos;
+		todoList.todos = [];
+		angular.forEach(oldTodos, function(todo) {
+			if (!todo.done) {
+				todoList.todos.push(todo);
+			}
+		})
+	}
+
+	todoList.remove = function(json) {
+		console.log(json)
+		var i = todoList.todos.indexOf(json);
+		console.log(i);
+		todoList.todos.splice(i, 1)
+	}
+
+	var updateLocalStorage = function(json) {
+		localStorage.todoList = JSON.stringify(json);
+
+	}
+})
+</script>
+</html>
