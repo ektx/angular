@@ -1,0 +1,4 @@
+<div>{{ tree.name }}</div>
+<ul ng-if="tree.children">
+    <li ng-repeat="tree in tree.children" ng-include="'tree.html'"></li>
+</ul>

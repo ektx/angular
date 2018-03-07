@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+	<meta charset="UTF-8">
+	<title>Example</title>
+	<script src="../../1.x/lib/angular-1.4.3/angular.min.js"></script>
+</head>
+<body ng-controller="treeCtrl" >
+    <div ng-repeat="tree in root" ng-include="'tree.html'"></div>
+</body>
+<script>
+angular
+    .module('app',[])
+    .controller('treeCtrl', function($scope) {
+        $scope.root = [
+            {
+                name: 'root',
+                children: [
+                    {
+                        name: 'level1',
+                        children: []
+                    }
+                ]
+            }
+        ]
+    })
+</script>
+</html>
