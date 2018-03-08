@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Example</title>
-	<script src="../../1.x/lib/angular-1.4.3/angular.min.js"></script>
+	<script src="../../../1.x/lib/angular-1.4.3/angular.min.js"></script>
 </head>
 <body ng-controller="treeCtrl" >
     <div ng-repeat="tree in root" ng-include="'tree.html'"></div>
@@ -15,6 +15,7 @@ angular
         $scope.root = [
             {
                 name: 'root',
+                show: true,
                 children: [
                     {
                         name: 'level1',
@@ -22,7 +23,25 @@ angular
                     }
                 ]
             }
-        ]
+        ],
+
+        $scope.add = function(node) {
+            console.log(node)
+            node.children.push({
+                name: new Date(),
+                show: true,
+                children: []
+            })
+        },
+
+        $scope.del = function(index, node) {
+            console.log(index, node)
+            // node.children.splice(index, 1)
+        },
+
+        $scope.toggle = function(node) {
+            node.show = !node.show
+        }
     })
 </script>
 </html>

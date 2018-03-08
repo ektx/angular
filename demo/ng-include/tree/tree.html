@@ -1,4 +1,9 @@
-<div>{{ tree.name }}</div>
-<ul ng-if="tree.children">
+<div>
+    <span>{{ tree.name }}</span>
+    <button ng-click="add(tree)">+</button>
+    <button ng-click="del($index, tree)">-</button>
+    <button ng-click="toggle(tree)">♺</button>
+</div>
+<ul ng-if="tree.children && tree.show">
     <li ng-repeat="tree in tree.children" ng-include="'tree.html'"></li>
 </ul>
