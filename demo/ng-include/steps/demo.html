@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+	<meta charset="UTF-8">
+    <title>angular steps</title>
+    <style>
+    ul {
+        list-style: none;
+    }
+    ul, li, p, i {
+        margin: 0;
+        padding: 0;
+    }
+    </style>
+</head>
+<body ng-controller="myController" >
+
+    <div ng-include="'steps.html'" ng-init="ngStepsData = root"></div>
+
+    <div ng-include="'steps.html'" ng-init="ngStepsData = root"></div>
+    
+    <script src="../../../1.x/lib/angular-1.4.3/angular.min.js"></script>
+</body>
+<script>
+angular
+    .module('app',[])
+    .controller('myController', function($scope) {
+        $scope.root = [
+            {
+                "title": "说资变",
+                "subTitle": "2018-03-21 14:21:13",
+                "preview": "子我儿她代率生度世同议局改济花儿体则军",
+                "status": 1,
+                statusInfo: "申请"
+            },
+            {
+                "title": "指土片",
+                "subTitle": "2018-03-21 14:21:13",
+                "preview": "制整确战分设北军高科场断料体且或",
+                "status": 1
+            },
+            {
+                "title": "高极理西",
+                "subTitle": "2018-03-21 14:21:13",
+                "preview": "无通政清论适统为些地学然世变问",
+                "status": 1
+            },
+            {
+                "title": "内干酸",
+                "subTitle": "2018-03-21 14:21:13",
+                "preview": "般二程约将产基该设流无管次",
+                "status": 1
+            },
+            {
+                "title": "火反分造完",
+                "subTitle": "2018-03-21 14:21:13",
+                "preview": "向起好县证目养求意与解年",
+                "status": 1
+            },
+            {
+                "title": "风离出",
+                "subTitle": "2018-03-21 14:21:13",
+                "preview": "周往集样传己群感干设许组平经天率状变至象",
+                "status": 1
+            },
+            {
+                "title": "提百结",
+                "subTitle": "2018-03-21 14:21:13",
+                "preview": "每期把同满切己国导群他",
+                "status": 2
+            },
+            {
+                "title": "格玉维专",
+                "subTitle": "2018-03-21 14:21:13",
+                "preview": "况候特二则变后斯条听关发起济权建加争",
+                "status": 0
+            },
+            {
+                "title": "代号",
+                "subTitle": "2018-03-21 14:21:13",
+                "preview": "多高话容特意该直半性厂所南年",
+                "status": 0
+            },
+            {
+                "title": "素感华",
+                "subTitle": "2018-03-21 14:21:13",
+                "preview": "术处品其根据个关王济亲历品矿",
+                "status": 0
+            }
+        ]
+    })
+</script>
+</html>
