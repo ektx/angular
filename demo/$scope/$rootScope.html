@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Angular $rootScope</title>
+</head>
+<body>
+    <div ng-app="myApp">
+        <h1>Hello {{ name }}</h1>
+    </div>
+    <script src="../../1.x/lib/1.4.8/angular.js"></script>
+    <script>
+        angular.module('myApp', [])
+            .run(function($rootScope) {
+                $rootScope.name = "World"
+            })
+    </script>
+</body>
+</html>
