@@ -1,77 +1,23 @@
 <ul class="an-steeps-mod">
-    <li ng-repeat="node in ngStepsData" ng-class="node.status ? node.status === 1 ? 'success' : 'process' : 'wait' ">
-        <i title="{{ node.statusInfo }}">
-            <span>{{$index + 1}}</span>
-        </i>
-        <p class="title">{{ node.title }}</p>
-        <p class="subTitle">{{ node.subTitle }}</p>
-        <p class="preview">{{ node.preview }}</p>
+    <li ng-repeat="node in ngStepsData">
+        <div 
+            ng-class="[
+                'an-li-header', 
+                node.status === 0 ? 'wait' :
+                    node.status === 1 ? 'success' :
+                        node.status === 2 ? 'process' : 'error',
+                {'has-child': node.children.length} 
+            ]"
+        >
+            <i title="{{ node.statusInfo }}">
+                <span>{{$index + 1}}</span>
+            </i>
+            <p class="title">{{ node.title }}</p>
+            <p class="subTitle">{{ node.subTitle }}</p>
+            <p class="preview">{{ node.preview }}</p>
+        </div>
+        <div ng-if="node.children.length" class="an-li-children">
+            <asteps ng-steps-data="node.children"></asteps>
+        </div>
     </li>
 </ul>
-
-<style>
-.an-steeps-mod li {
-    position: relative;
-    padding: 5px 0 5px 30px;
-    font-size: 12px;
-    color: #999;
-}
-.an-steeps-mod li:not(:last-child)::after {
-    display: block;
-    content: '';
-    position: absolute;
-    top: 26px;
-    left: 14px;
-    bottom: -3px;
-    border-left: 1px solid #aaa;
-}
-.an-steeps-mod li i {
-    position: relative;
-    float: left;
-    margin: 0 0 0 -24px;
-    width: 16px;
-    height: 16px;
-    font-style: normal;
-    font-size: 12px;
-    text-align: center;
-    color: #999;
-    border-radius: 100%;
-    border: 1px solid #999;
-    background-color: #fff;
-}
-
-.an-steeps-mod li.process i,
-.an-steeps-mod li.success i {
-    border-color: #2d8cf0;
-    background-color: #2d8cf0;
-}
-.an-steeps-mod li.success::after {
-    border-color: #2d8cf0;
-}
-.an-steeps-mod li.success i span {
-    display: none
-}
-
-.an-steeps-mod li.success i::before {
-    content: '';
-    border-color: #fff;
-    border-width: 0 0 2px 2px;
-    width: 7px;
-    height: 3px;
-    display: block;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    border-style: solid;
-    transform: translateX(-50%) translateY(-50%) rotate(-45deg);
-}
-
-.an-steeps-mod li.process i {
-    color: #fff;
-}
-
-.an-steeps-mod li .title {
-    color: #333;
-    font-size: 14px;
-}
-</style>

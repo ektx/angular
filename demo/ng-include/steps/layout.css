@@ -1,0 +1,107 @@
+@charset "UTF-8";
+
+/*
+    angularjs 1.x 步骤流程样式
+
+    @author zwl <ektx1989@icloud.com>
+    @date 2018-3-23
+*/
+
+.an-steeps-mod .an-li-header {
+    position: relative;
+    padding: 5px 0 5px 30px;
+    font-size: 12px;
+    color: #999;
+}
+.an-li-header.has-child::before,
+.an-steeps-mod li:not(:last-child) .an-li-header::before {
+    display: block;
+    content: '';
+    position: absolute;
+    top: 26px;
+    left: 14px;
+    bottom: -3px;
+    border-left: 1px solid #aaa;
+}
+.an-steeps-mod .an-li-header i {
+    position: relative;
+    float: left;
+    margin: 0 0 0 -24px;
+    width: 16px;
+    height: 16px;
+    font-style: normal;
+    font-size: 12px;
+    text-align: center;
+    line-height: 16px;
+    color: #999;
+    border-radius: 100%;
+    border: 1px solid #999;
+    background-color: #fff;
+}
+
+.an-steeps-mod .an-li-header.process i,
+.an-steeps-mod .an-li-header.success i {
+    border-color: #2d8cf0;
+    background-color: #2d8cf0;
+}
+.an-steeps-mod li .an-li-header.has-child.process::before,
+.an-steeps-mod li .an-li-header.success::before {
+    border-color: #2d8cf0;
+}
+.an-steeps-mod .an-li-header.success i span {
+    display: none
+}
+
+.an-steeps-mod .an-li-header.success i::before {
+    content: '';
+    border-color: #fff;
+    border-width: 0 0 2px 2px;
+    width: 7px;
+    height: 3px;
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-style: solid;
+    transform: translateX(-50%) translateY(-50%) rotate(-45deg);
+}
+
+.an-steeps-mod .an-li-header.error i,
+.an-steeps-mod .an-li-header.process i {
+    color: #fff;
+}
+
+.an-steeps-mod .an-li-header .title {
+    color: #333;
+    font-size: 14px;
+}
+
+.an-steeps-mod .an-li-header.error i,
+.an-steeps-mod .an-li-header.error i {
+    border-color: #F44336;
+    background-color: #F44336;
+}
+
+/* 多级样式 */
+.an-steeps-mod .an-li-children .an-li-header i {
+    margin: 4px 0 0 -21px;
+    width: 8px;
+    height: 8px;
+    font-style: normal;
+    font-size: 0;
+}
+.an-steeps-mod .an-li-children .an-li-header.success i::before {
+    content: '';
+    display: none;
+}
+.an-steeps-mod .an-li-children .an-li-header.process i {
+    background-color: transparent;
+    border-width: 2px;
+}
+.an-steeps-mod li .an-li-children .an-li-header::before {
+    top: 21px;
+}
+.an-steeps-mod li .an-li-header.has-child::before,
+.an-steeps-mod .an-li-children li:not(:last-child) .an-li-header::before {
+    bottom: -7px;
+}

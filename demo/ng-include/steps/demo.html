@@ -12,22 +12,119 @@
         padding: 0;
     }
     </style>
+    <link rel="stylesheet" href="layout.css">
 </head>
 <body ng-controller="myController" >
+    <h4>一级流程</h4>
+    <asteps ng-steps-data="root2"></asteps>
 
-    <div ng-include="'steps.html'" ng-init="ngStepsData = root"></div>
+    <h4>二级流程</h4>
+    <asteps ng-steps-data="root"></asteps>
 
-    <div ng-include="'steps.html'" ng-init="ngStepsData = root"></div>
-    
     <script src="../../../1.x/lib/angular-1.4.3/angular.min.js"></script>
 </body>
 <script>
+/**
+ * ngStepsData {Object}
+ * status [1 通过，2 当前，0等待，3 错误]
+ */
+    
 angular
     .module('app',[])
+    // 添加到你的 Directive
+    .directive('asteps', function () {
+        return {
+            restrict: 'E',
+            scope: {
+                ngStepsData: '='
+            },
+            template: '<div ng-include="\'steps.html\'"></div>'
+        }
+    })
     .controller('myController', function($scope) {
+
+        $scope.harry = {
+            name: 'harry'
+        }
+
         $scope.root = [
             {
-                "title": "说资变",
+                "title": "角实步你",
+                "subTitle": "2018-03-23 09:04:35",
+                "preview": "她矿较传已识采正打间决花交总此好活",
+                "status": 1,
+                "children": [
+                    {
+                        "title": "京权眼论",
+                        "subTitle": "2018-03-23 09:04:35",
+                        "preview": "理中前己决断装办省这元军运",
+                        "status": 1
+                    },
+                    {
+                        "title": "三统农",
+                        "subTitle": "2018-03-23 09:04:35",
+                        "preview": "观两用技难问就名调查",
+                        "status": 1
+                    },
+                    {
+                        "title": "并什较革科",
+                        "subTitle": "2018-03-23 09:04:35",
+                        "preview": "听近百由工县片张感究能住",
+                        "status": 1
+                    }
+                ]
+            },
+            {
+                "title": "变养",
+                "subTitle": "2018-03-23 09:04:35",
+                "preview": "及引点按车金收经半类示战林众民代",
+                "status": 2,
+                "children": [
+                    {
+                        "title": "求动周",
+                        "subTitle": "2018-03-23 09:04:35",
+                        "preview": "第接听代江好并际决按真位原口示",
+                        "status": 1
+                    },
+                    {
+                        "title": "十其不",
+                        "subTitle": "2018-03-23 09:04:35",
+                        "preview": "领深力什保加研象万向王细她产元你器却例",
+                        "status": 3
+                    },
+                    {
+                        "title": "活米写放",
+                        "subTitle": "2018-03-23 09:04:35",
+                        "preview": "选深候己研社造名打据复交研小受",
+                        "status": 0
+                    }
+                ]
+            },
+            {
+                "title": "保经",
+                "subTitle": "2018-03-23 09:04:35",
+                "preview": "日候铁二式些图格去火收及",
+                "status": 0,
+                "children": [
+                    {
+                        "title": "走计也次",
+                        "subTitle": "2018-03-23 09:04:35",
+                        "preview": "在决量党会快值支越些及毛派发立次也只",
+                        "status": 0
+                    },
+                    {
+                        "title": "电史写",
+                        "subTitle": "2018-03-23 09:04:35",
+                        "preview": "化二始书进玉两记下几记传",
+                        "status": 0
+                    }
+                ]
+            }
+        ]
+
+        $scope.root2 = [
+            {
+                "title": "说资",
                 "subTitle": "2018-03-21 14:21:13",
                 "preview": "子我儿她代率生度世同议局改济花儿体则军",
                 "status": 1,
@@ -67,7 +164,7 @@ angular
                 "title": "提百结",
                 "subTitle": "2018-03-21 14:21:13",
                 "preview": "每期把同满切己国导群他",
-                "status": 2
+                "status": 3
             },
             {
                 "title": "格玉维专",
