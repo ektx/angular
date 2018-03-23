@@ -1,23 +1,21 @@
-<ul class="an-steeps-mod">
-    <li ng-repeat="node in ngStepsData">
-        <div 
-            ng-class="[
-                'an-li-header', 
-                node.status === 0 ? 'wait' :
-                    node.status === 1 ? 'success' :
-                        node.status === 2 ? 'process' : 'error',
-                {'has-child': node.children.length} 
-            ]"
-        >
-            <i title="{{ node.statusInfo }}">
-                <span>{{$index + 1}}</span>
-            </i>
-            <p class="title">{{ node.title }}</p>
-            <p class="subTitle">{{ node.subTitle }}</p>
-            <p class="preview">{{ node.preview }}</p>
-        </div>
-        <div ng-if="node.children.length" class="an-li-children">
-            <asteps ng-steps-data="node.children"></asteps>
-        </div>
-    </li>
-</ul>
+<li ng-repeat="node in ngStepsData">
+    <div 
+        ng-class="[
+            'an-li-header', 
+            node.status === 0 ? 'wait' :
+                node.status === 1 ? 'success' :
+                    node.status === 2 ? 'process' : 'error',
+            {'has-child': node.children.length} 
+        ]"
+    >
+        <i title="{{ node.statusInfo }}">
+            <span>{{$index + 1}}</span>
+        </i>
+        <p class="title">{{ node.title }}</p>
+        <p class="subTitle">{{ node.subTitle }}</p>
+        <p class="preview">{{ node.preview }}</p>
+    </div>
+    <div ng-if="node.children.length" class="an-li-children">
+        <asteps ng-steps-data="node.children"></asteps>
+    </div>
+</li>

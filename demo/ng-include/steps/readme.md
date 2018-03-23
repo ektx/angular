@@ -20,6 +20,7 @@
                ngStepsData: '='
            },
            // 注意这里的路径，你可以使用你自己的路径来修改它
+           // 记得到时要把文件复制过来
            template: '<div ng-include="\'steps.html\'"></div>'
        }
    })
@@ -101,7 +102,11 @@
 
    ngStepsData 接受一个数组内容。
 
+4. 复制文件到你的项目中
 
+   位置就是你刚在directive中写到的位置。
+
+   ​
 
 ## ngStepsData 说明
 
@@ -114,4 +119,3 @@
 | children | Array                            | 子级内容 |
 
 > children 的嵌套目前只支持2级，多级效果不佳
-
