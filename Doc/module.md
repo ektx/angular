@@ -1,8 +1,8 @@
-## angular.module
+## 模块
 
 应用开发模块  
 
-angular.module(name, [requires], [configFn]);  
+**angular.module(name, [requires], [configFn])**  
 
 @name   模块名称  
 

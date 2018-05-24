@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Mulit Level</title>
+</head>
+<body ng-app="app">
+    <div ng-controller="myController">
+        <div ng-bind="mulitLevelData" ng-include="'components/index.html'"></div>
+
+        <div ng-bind="mulitLevelData" ng-include="'components/index.html'"></div>
+    </div>
+    
+    <script src="../1.x/lib/1.1.5/angular.min.js"></script>
+    <script>
+        var obj = [
+            {
+                label: 'no children'
+            },
+            {
+                label: 'has children',
+                children: []
+            }
+        ]
+
+        var myApp = angular.module('app', [])
+        myApp.controller('myController', function($scope) {
+            $scope.mulitLevelData = obj.map(function(val) {
+                return {
+                    label: val.label,
+                    children: val.children,
+                    click: 'hello'
+                }
+            })
+
+            $scope.hello = function (data) {
+                console.log(data)
+            }
+
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>表达示</title>
+</head>
+<body ng-app="myApp">
+    <p>AngularJS通过$parse这个内部服务来进行表达式的运算，这个服务能够访问当前所处的作用域。</p>
+    <p>这个过程允许我们访问定义在$scope上的原始JavaScript数据和函数。 将$parse服务注入到控制器中，然后调用它就可以实现手动解析表达式。</p>
+    <div ng-controller="MyController">
+        <input type="text" ng-model="expr" placeholder="Enter an expression">
+        <h2>{{ parseValue }}</h2>
+    </div>
+
+    <script src="../../1.x/lib/1.4.8/angular.js"></script>
+    <script>
+    angular.module('myApp', [])
+        .controller('MyController', function ($scope, $parse) {
+            $scope.$watch('expr', function(newVal, oldVal, scope) {
+                if (newVal !== oldVal) {
+                    // 用该表达示设置parseFun
+                    var parseFun = $parse(newVal)
+                    // 获取经过解析后的表达式的值
+                    $scope.parsedValue = parseFun(scope)
+                }
+            })
+        })
+    </script>
+</body>
+</html>
