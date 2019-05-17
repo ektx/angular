@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+	<meta charset="UTF-8">
+	<title>Example</title>
+	<script src="../1.x/lib/1.1.5/angular1.1.5.min.js"></script>
+</head>
+<body ng-controller="ctrl">
+{{arr}}
+<input a={{$index}} type="text" name="" ng-repeat="item in arr" ng-model="arr[$index]" ng-change="change()">
+
+<script type="text/javascript">
+	angular.module('app',[])
+	.controller('ctrl', function ($scope) {
+		$scope.arr = [1,2,3]
+
+		$scope.change = function(val) {
+			console.log(val)
+		}
+	})
+</script>
+</html>
